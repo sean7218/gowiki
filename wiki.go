@@ -7,6 +7,7 @@ import (
 	"html/template"
 	"regexp"
 	"errors"
+	"os"
 )
 
 type Page struct {
@@ -14,10 +15,23 @@ type Page struct {
 	Body  []byte
 }
 
-var templates = template.Must(template.ParseFiles("edit.html", "view.html"))
+type User struct {
+	UserName string
+	Email string
+	Password string
+}
+
+var templates = template.Must(template.ParseFiles("public/edit.html", "public/view.html", "public/main.html"))
+var Tmls = template.Must(template.ParseGlob("../public/*"))
+
 
 var validPath = regexp.MustCompile("^/(edit|save|view)/([a-zA-Z0-9]+)$")
 
+func getStaticFiles(w http.ResponseWriter, r *http.Request) {
+	dir, _ := os.Getwd()
+	Tmls.ExecuteTemplate(w, "main", nil)
+	fmt.Fprintf(w, "The current directory: %s", dir)
+}
 func (p *Page) save() error {
 	filename := p.Title + ".txt"
 	return ioutil.WriteFile(filename, p.Body, 0600)
@@ -34,6 +48,27 @@ func loadPage(title string) (*Page, error) {
 
 func handler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Hi there, I love %s!", r.URL.Path[1:])
+}
+
+func mPageHandler(w http.ResponseWriter, r *http.Request){
+	err := templates.ExecuteTemplate(w, "main.html", nil)
+
+	if err != nil {
+		return
+	} else {
+		fmt.Println("Sucessfully ")
+	}
+}
+
+func addUser(w http.ResponseWriter, r *http.Request){
+	if r.Method == http.MethodPost {
+		email := r.PostFormValue("email")
+		username := r.PostFormValue("username")
+		password := r.PostFormValue("password")
+		aUser := User{username, email, password }
+		fmt.Fprintf(w, "Email: %s \n Username: %s \n Password: %s \n", aUser.Email, aUser.UserName, aUser.Password)
+	}
+	return
 }
 
 func viewHandler(w http.ResponseWriter, r *http.Request) {
@@ -65,7 +100,6 @@ func editHandler(w http.ResponseWriter, r *http.Request){
 }
 
 
-
 func saveHandler(w http.ResponseWriter, r *http.Request){
 	//title := r.URL.Path[len("/save/"):]
 	title, err := getTitle(w, r)
@@ -74,7 +108,7 @@ func saveHandler(w http.ResponseWriter, r *http.Request){
 	}
 	body := r.FormValue("body")
 	p := &Page{Title: title, Body: []byte(body)}
-	err := p.save()
+	err = p.save()
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -96,6 +130,7 @@ func renderTemplate(w http.ResponseWriter, tmpl string, p *Page) {
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
+
 }
 
 func main() {
@@ -107,5 +142,9 @@ func main() {
 	http.HandleFunc("/view/", viewHandler)
 	http.HandleFunc("/edit/", editHandler)
 	http.HandleFunc("/save/", saveHandler)
+	http.HandleFunc("/main/", mPageHandler)
+	http.HandleFunc("/addUser", addUser)
+	http.HandleFunc("/getStaticFile", getStaticFiles)
 	http.ListenAndServe(":8080", nil)
+
 }
