@@ -8,6 +8,8 @@ import (
 	"regexp"
 	"errors"
 	"os"
+	"database/sql"
+	_ "github.com/go-sql-driver/mysql"
 )
 
 type Page struct {
@@ -22,14 +24,14 @@ type User struct {
 }
 
 var templates = template.Must(template.ParseFiles("public/edit.html", "public/view.html", "public/main.html"))
-var Tmls = template.Must(template.ParseGlob("../public/*"))
+//var Tmls = template.Must(template.ParseGlob("../public/*"))
 
 
 var validPath = regexp.MustCompile("^/(edit|save|view)/([a-zA-Z0-9]+)$")
 
 func getStaticFiles(w http.ResponseWriter, r *http.Request) {
 	dir, _ := os.Getwd()
-	Tmls.ExecuteTemplate(w, "main", nil)
+	//Tmls.ExecuteTemplate(w, "main", nil)
 	fmt.Fprintf(w, "The current directory: %s", dir)
 }
 func (p *Page) save() error {
@@ -133,18 +135,83 @@ func renderTemplate(w http.ResponseWriter, tmpl string, p *Page) {
 
 }
 
+func setupDatabase(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("opening the dtabase")
+	db, err := sql.Open("mysql", "szhang:password@unix(/tmp/mysql.sock)/user?loc=Local")
+	if err != nil {
+		// Just for example purpose. You should use proper error handling instead of panic
+		fmt.Println("opening error")
+		panic(err.Error())
+	}
+	defer db.Close()
+
+	// Open doesn't open a connection. Validate DSN data:
+	err = db.Ping()
+	if err != nil {
+		// proper error handling instead of panic in your app
+		fmt.Println("pinging error")
+		panic(err.Error())
+	}
+
+	// Prepare statement for reading data
+	stmtOut, err := db.Prepare("SELECT * FROM t WHERE username = ? ")
+	if err != nil {
+		// proper error handling instead of panic in your app
+		panic(err.Error())
+	}
+	defer stmtOut.Close()
+
+
+	var id int
+	var username string // we "scan" the result in here
+	var email string
+	var pwd string
+
+	// Query another number.. 1 maybe?
+	err = stmtOut.QueryRow("sean7218").Scan(&id, &username, &email, &pwd) // WHERE number = 1
+	if err != nil {
+		panic(err.Error()) // proper error handling instead of panic in your app
+	}
+
+	fmt.Fprint(w, "id: %d, username: %s, email: $s, password: %s", id,  username, email, pwd)
+}
+
+
+
+
+
+
 func main() {
 	p1 := &Page{Title: "TestPage", Body: []byte("This is a sample Page.")}
 	p1.save()
 	p2, _ := loadPage("TestPage")
 	fmt.Println(string(p2.Body))
+
+	// Setup database
+	db, err := sql.Open("mysql", "szhang:password@unix(/tmp/mysql.sock)/user?loc=Local")
+	if err != nil {
+		panic(err.Error())
+	}
+
+	defer db.Close()
+
+	err = db.Ping()
+	if err != nil {
+		panic(err.Error())
+	}
+
+
+	//a := AuthHandler{ db }
+	//l := LoginHandler{ db}
 	http.HandleFunc("/", handler)
 	http.HandleFunc("/view/", viewHandler)
 	http.HandleFunc("/edit/", editHandler)
 	http.HandleFunc("/save/", saveHandler)
 	http.HandleFunc("/main/", mPageHandler)
-	http.HandleFunc("/addUser", addUser)
 	http.HandleFunc("/getStaticFile", getStaticFiles)
+	http.Handle("/register", registerHandler(db))
+	http.Handle("/loginbyname", &LoginHandler{db} )
+
 	http.ListenAndServe(":8080", nil)
 
 }

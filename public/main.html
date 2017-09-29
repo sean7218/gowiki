@@ -18,7 +18,7 @@
     <div class="container fill">
         <div class="row justify-content-center align-items-center">
             <div class="col-6">
-                <form class="register" method="post" action="/addUser">
+                <form class="register" method="post" action="/register">
                     <div class="form-group">
                         <label for="exampleInputUsername1" class="bmd-label-floating">Username</label>
                         <input class="form-control" type="text" name="username" id="exampleInputUsername1">
@@ -40,6 +40,24 @@
     <br>
     <br>
     <br>
+    <div class="container fill">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-6">
+                <form class="register" method="post" action="/loginbyname">
+                    <div class="form-group">
+                        <label for="loginUsername1" class="bmd-label-floating">Username</label>
+                        <input class="form-control" type="text" name="username" id="loginUsername1">
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword1" class="bmd-label-floating">Password</label>
+                        <input class="form-control" type="password" name="password" id="loginPassword1">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-raised">Login</button>
+                    <button class="btn btn-default">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
     <br>
     <br>
     <div class="container">
