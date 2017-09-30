@@ -201,6 +201,7 @@ func main() {
 	}
 
 
+	//setupCJWT()
 	//a := AuthHandler{ db }
 	//l := LoginHandler{ db}
 	http.HandleFunc("/", handler)
