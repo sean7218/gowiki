@@ -135,51 +135,6 @@ func renderTemplate(w http.ResponseWriter, tmpl string, p *Page) {
 
 }
 
-func setupDatabase(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("opening the dtabase")
-	db, err := sql.Open("mysql", "szhang:password@unix(/tmp/mysql.sock)/user?loc=Local")
-	if err != nil {
-		// Just for example purpose. You should use proper error handling instead of panic
-		fmt.Println("opening error")
-		panic(err.Error())
-	}
-	defer db.Close()
-
-	// Open doesn't open a connection. Validate DSN data:
-	err = db.Ping()
-	if err != nil {
-		// proper error handling instead of panic in your app
-		fmt.Println("pinging error")
-		panic(err.Error())
-	}
-
-	// Prepare statement for reading data
-	stmtOut, err := db.Prepare("SELECT * FROM t WHERE username = ? ")
-	if err != nil {
-		// proper error handling instead of panic in your app
-		panic(err.Error())
-	}
-	defer stmtOut.Close()
-
-
-	var id int
-	var username string // we "scan" the result in here
-	var email string
-	var pwd string
-
-	// Query another number.. 1 maybe?
-	err = stmtOut.QueryRow("sean7218").Scan(&id, &username, &email, &pwd) // WHERE number = 1
-	if err != nil {
-		panic(err.Error()) // proper error handling instead of panic in your app
-	}
-
-	fmt.Fprint(w, "id: %d, username: %s, email: $s, password: %s", id,  username, email, pwd)
-}
-
-
-
-
-
 
 func main() {
 	p1 := &Page{Title: "TestPage", Body: []byte("This is a sample Page.")}
@@ -200,7 +155,7 @@ func main() {
 		panic(err.Error())
 	}
 
-
+	setupJSON()
 	//setupCJWT()
 	//a := AuthHandler{ db }
 	//l := LoginHandler{ db}
@@ -212,6 +167,7 @@ func main() {
 	http.HandleFunc("/getStaticFile", getStaticFiles)
 	http.Handle("/register", registerHandler(db))
 	http.Handle("/loginbyname", &LoginHandler{db} )
+	http.HandleFunc("/getDrawing/", setupDwg )
 
 	http.ListenAndServe(":8080", nil)
 

@@ -1,0 +1,34 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+{{template "header" .}}
+
+<body>
+
+
+
+ <div class="container">
+     <div class="row justify-content-center">
+         <div class="col-6">
+             <ul class="list-group">
+                 {{range .}}
+
+                 <li id=g{{.Id}} class="list-group-item active">{{.Email}}
+                     <span class="badge badge-primary badge-pill">14</span>
+                 </li>
+                 <li class="list-group-item">{{.Username}}</li>
+
+                 {{end}}
+             </ul>
+         </div>
+     </div>
+ </div>
+<style>
+    #g1 {
+        background-color: beige;
+    }
+</style>
+ {{template "script" .}}
+</body>
+</html>
