@@ -101,7 +101,6 @@ func editHandler(w http.ResponseWriter, r *http.Request){
 
 }
 
-
 func saveHandler(w http.ResponseWriter, r *http.Request){
 	//title := r.URL.Path[len("/save/"):]
 	title, err := getTitle(w, r)
@@ -165,8 +164,10 @@ func main() {
 	http.HandleFunc("/save/", saveHandler)
 	http.HandleFunc("/main/", mPageHandler)
 	http.HandleFunc("/getStaticFile", getStaticFiles)
+
 	http.Handle("/register", registerHandler(db))
-	http.Handle("/loginbyname", &LoginHandler{db} )
+	http.Handle("/login", &LoginHandler{db })
+
 	http.HandleFunc("/getDrawing/", setupDwg )
 
 	http.ListenAndServe(":8080", nil)

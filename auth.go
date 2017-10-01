@@ -19,17 +19,33 @@ type LoginHandler struct {
 func (h *LoginHandler)ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		username := r.PostFormValue("username")
+
 		password := r.PostFormValue("password")
 		if username != "" && password != "" {
+
 			pwd := h.findUserPassword(username)
-			fmt.Fprintf(w, "password: %s", pwd)
+			if pwd == password {
+				w.WriteHeader(http.StatusAccepted)
+				token, err := generateJWT()
+				if err != nil {
+					return
+				}
+				fmt.Fprintf(w, "token: %s", token)
+			} else {
+				w.WriteHeader(http.StatusForbidden)
+				w.Write([]byte("403 - Access Denied."))
+			}
 		} else {
-			fmt.Fprintln(w, "login failed because missing fields")
+			w.WriteHeader(http.StatusBadRequest)
+			w.Write([]byte("400 - Bad Request: Missing Fields."))
 		}
 	} else {
-		fmt.Fprintln(w, "Invaid http method - should be post")
+		w.WriteHeader(http.StatusBadRequest)
+		w.Write([]byte("400 - Bad Request: Incorrect Method."))
 	}
 }
+
+
 
 func registerHandler(db *sql.DB) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request){
@@ -39,7 +55,6 @@ func registerHandler(db *sql.DB) http.Handler {
 			email := r.PostFormValue("email")
 			password := r.PostFormValue("password")
 			if username != "" && email != "" && password !="" {
-
 
 				stmtIns, err := db.Prepare("INSERT INTO t VALUES (?, ?, ?, ?)")
 				if err != nil { panic(err.Error())}
@@ -109,20 +124,3 @@ func (a *AuthHandler)findUserByEmail(email string) http.Handler {
 	})
 
 }
-
-//func setupDB() *sql.DB {
-//
-//	db, err := sql.Open("mysql", "szhang:password@unix(/tmp/mysql.sock)/user?loc=Local")
-//	if err != nil {
-//		panic(err.Error())
-//	}
-//
-//	defer db.Close()
-//
-//	err = db.Ping()
-//	if err != nil {
-//		panic(err.Error())
-//	}
-//
-//	return db
-//}
