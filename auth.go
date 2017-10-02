@@ -6,6 +6,7 @@ import (
 	"database/sql"
 	_ "github.com/go-sql-driver/mysql"
 
+	"encoding/json"
 )
 
 type AuthHandler struct {
@@ -18,9 +19,10 @@ type LoginHandler struct {
 
 func (h *LoginHandler)ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
-		username := r.PostFormValue("username")
 
+		username := r.PostFormValue("username")
 		password := r.PostFormValue("password")
+
 		if username != "" && password != "" {
 
 			pwd := h.findUserPassword(username)
@@ -28,9 +30,17 @@ func (h *LoginHandler)ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				w.WriteHeader(http.StatusAccepted)
 				token, err := generateJWT()
 				if err != nil {
+					fmt.Fprintln(w, "Error with token")
 					return
 				}
-				fmt.Fprintf(w, "token: %s", token)
+				var out = struct { Token string `json:token` } { token}
+				jsn, err := json.Marshal(out)
+				if err != nil {
+					fmt.Fprintln(w, "Error with token")
+					return
+				}
+				w.Header().Set("Content-Type", "application/json")
+				w.Write(jsn)
 			} else {
 				w.WriteHeader(http.StatusForbidden)
 				w.Write([]byte("403 - Access Denied."))

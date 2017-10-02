@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/dgrijalva/jwt-go"
+	"net/http"
 )
 
 
@@ -27,11 +28,11 @@ func generateJWT() (string, error) {
 	return ss, err
 }
 
-func verifyJWT(token string) error {
+func verifyJWT(w http.ResponseWriter, r *http.Request) {
 	mySigningKey := []byte("AllYourBase")
-
+	token := "asj12kk12k21s"
 	// Parse and validate the jwt
-	ptoken, err := jwt.Parse(token, func(token *jwt.Token) (interface{}, error){
+	_, err := jwt.Parse(token, func(token *jwt.Token) (interface{}, error){
 		// Validate the algorithm is what you expect
 		_, ok := token.Method.(*jwt.SigningMethodHMAC)
 		if ok != false {
@@ -40,8 +41,10 @@ func verifyJWT(token string) error {
 		return mySigningKey, nil
 	})
 
-	return err
+	fmt.Fprintln(w, err)
 }
+
+
 
 func setupCJWT(){
 

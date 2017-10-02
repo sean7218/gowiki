@@ -169,7 +169,7 @@ func main() {
 	http.Handle("/login", &LoginHandler{db })
 
 	http.HandleFunc("/getDrawing/", setupDwg )
-
+	http.handle("/protect/data", middlewareOne(middlewareTwo(verifyJWT)))
 	http.ListenAndServe(":8080", nil)
 
 }
