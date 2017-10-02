@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a264f1f-7a9a-4947-aebb-0157c9917b75" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/middleware.go" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auth.go" afterPath="$PROJECT_DIR$/auth.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/middleware.go" afterPath="$PROJECT_DIR$/middleware.go" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/token.go" afterPath="$PROJECT_DIR$/token.go" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wiki.go" afterPath="$PROJECT_DIR$/wiki.go" />
     </list>
@@ -17,11 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="wiki.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="wiki.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wiki.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
-              <caret line="175" column="0" lean-forward="true" selection-start-line="175" selection-start-column="0" selection-end-line="175" selection-end-column="0" />
+            <state relative-caret-position="430">
+              <caret line="178" column="0" lean-forward="false" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
               <folding>
                 <element signature="e#14#151#0" expanded="true" />
                 <element signature="n#!!block;n#getStaticFiles#0" expanded="false" />
@@ -40,11 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="middleware.go" pinned="false" current-in-tab="false">
+      <file leaf-file-name="middleware.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/middleware.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+            <state relative-caret-position="415">
+              <caret line="41" column="1" lean-forward="true" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
               <folding>
                 <element signature="e#14#43#0" expanded="true" />
               </folding>
@@ -55,8 +54,8 @@
       <file leaf-file-name="token.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/token.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+            <state relative-caret-position="123">
+              <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
               <folding>
                 <element signature="e#14#74#0" expanded="true" />
               </folding>
@@ -176,8 +175,8 @@
         <option value="$PROJECT_DIR$/adapter.go" />
         <option value="$PROJECT_DIR$/auth.go" />
         <option value="$PROJECT_DIR$/middleware.go" />
-        <option value="$PROJECT_DIR$/token.go" />
         <option value="$PROJECT_DIR$/wiki.go" />
+        <option value="$PROJECT_DIR$/token.go" />
       </list>
     </option>
   </component>
@@ -614,16 +613,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/middleware.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding>
-            <element signature="e#14#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/auth.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="416">
@@ -638,20 +627,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/token.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding>
-            <element signature="e#14#74#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wiki.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="175" column="0" lean-forward="true" selection-start-line="175" selection-start-column="0" selection-end-line="175" selection-end-column="0" />
+        <state relative-caret-position="430">
+          <caret line="178" column="0" lean-forward="false" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
           <folding>
             <element signature="e#14#151#0" expanded="true" />
             <element signature="n#!!block;n#getStaticFiles#0" expanded="false" />
@@ -665,6 +644,26 @@
             <element signature="n#!!block;n#saveHandler#0" expanded="false" />
             <element signature="n#!!block;n#getTitle#0" expanded="false" />
             <element signature="n#!!block;n#renderTemplate#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/token.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding>
+            <element signature="e#14#74#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/middleware.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="415">
+          <caret line="41" column="1" lean-forward="true" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
+          <folding>
+            <element signature="e#14#43#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -28,21 +28,28 @@ func generateJWT() (string, error) {
 	return ss, err
 }
 
-func verifyJWT(w http.ResponseWriter, r *http.Request) {
-	mySigningKey := []byte("AllYourBase")
-	token := "asj12kk12k21s"
-	// Parse and validate the jwt
-	_, err := jwt.Parse(token, func(token *jwt.Token) (interface{}, error){
-		// Validate the algorithm is what you expect
-		_, ok := token.Method.(*jwt.SigningMethodHMAC)
-		if ok != false {
-			return nil, fmt.Errorf("unexpected signing Mmthod: %v \n", token.Header["alg"])
-		}
-		return mySigningKey, nil
-	})
+// Middleware Version 2
+func verifyJWT(token string) Adapter {
 
-	fmt.Fprintln(w, err)
+	return func(h http.Handler) http.Handler {
+		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+
+			mySigningKey := []byte("AllYourBase")
+
+			// Parse and validate the jwt
+			_, err := jwt.Parse(token, func(token *jwt.Token) (interface{}, error){
+				// Validate the algorithm is what you expect
+				_, ok := token.Method.(*jwt.SigningMethodHMAC)
+				if ok != false {
+					return nil, fmt.Errorf("unexpected signing Mmthod: %v \n", token.Header["alg"])
+				}
+				return mySigningKey, nil
+			})
+
+		})
+	}
 }
+
 
 
 
