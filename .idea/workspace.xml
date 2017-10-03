@@ -4,6 +4,7 @@
     <list default="true" id="6a264f1f-7a9a-4947-aebb-0157c9917b75" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/middleware.go" afterPath="$PROJECT_DIR$/middleware.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model.go" afterPath="$PROJECT_DIR$/model.go" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/token.go" afterPath="$PROJECT_DIR$/token.go" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wiki.go" afterPath="$PROJECT_DIR$/wiki.go" />
     </list>
@@ -19,8 +20,8 @@
       <file leaf-file-name="wiki.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wiki.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="430">
-              <caret line="178" column="0" lean-forward="false" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
+            <state relative-caret-position="340">
+              <caret line="175" column="61" lean-forward="false" selection-start-line="175" selection-start-column="61" selection-end-line="175" selection-end-column="61" />
               <folding>
                 <element signature="e#14#151#0" expanded="true" />
                 <element signature="n#!!block;n#getStaticFiles#0" expanded="false" />
@@ -39,36 +40,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="middleware.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="middleware.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/middleware.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
-              <caret line="41" column="1" lean-forward="true" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
+            <state relative-caret-position="120">
+              <caret line="8" column="38" lean-forward="true" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
               <folding>
-                <element signature="e#14#43#0" expanded="true" />
+                <element signature="e#14#36#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="token.go" pinned="false" current-in-tab="false">
+      <file leaf-file-name="server.go" pinned="false" current-in-tab="false">
+        <entry file="file:///usr/local/go/src/net/http/server.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="175">
+              <caret line="81" column="5" lean-forward="false" selection-start-line="81" selection-start-column="5" selection-end-line="81" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="token.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/token.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
-              <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+            <state relative-caret-position="309">
+              <caret line="42" column="61" lean-forward="false" selection-start-line="42" selection-start-column="61" selection-end-line="42" selection-end-column="61" />
               <folding>
                 <element signature="e#14#74#0" expanded="true" />
+                <element signature="e#1245#1264#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="edit.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/edit.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -76,8 +78,8 @@
       <file leaf-file-name="model.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="681">
-              <caret line="99" column="31" lean-forward="false" selection-start-line="99" selection-start-column="31" selection-end-line="99" selection-end-column="31" />
+            <state relative-caret-position="165">
+              <caret line="68" column="74" lean-forward="false" selection-start-line="68" selection-start-column="74" selection-end-line="68" selection-end-column="74" />
               <folding>
                 <element signature="e#14#92#0" expanded="true" />
                 <element signature="n#!!block;n#setupJSON#0" expanded="false" />
@@ -99,7 +101,7 @@
       <file leaf-file-name="auth.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/auth.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
+            <state relative-caret-position="1375">
               <caret line="136" column="0" lean-forward="true" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
               <folding>
                 <element signature="e#14#113#0" expanded="true" />
@@ -108,16 +110,6 @@
                 <marker date="1506909129000" expanded="true" signature="2611:2645" ph="SELECT * FRO... t" />
                 <marker date="1506909129000" expanded="true" signature="3186:3217" ph="SELECT * FRO... t" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="script.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/script.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="7" lean-forward="false" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -168,13 +160,13 @@
         <option value="$PROJECT_DIR$/public/header.html" />
         <option value="$PROJECT_DIR$/public/footer.html" />
         <option value="$PROJECT_DIR$/public/scripts.html" />
-        <option value="$PROJECT_DIR$/model.go" />
         <option value="$PROJECT_DIR$/public/script.html" />
         <option value="$PROJECT_DIR$/public/dwg.html" />
         <option value="$PROJECT_DIR$/public/main.html" />
         <option value="$PROJECT_DIR$/adapter.go" />
         <option value="$PROJECT_DIR$/auth.go" />
         <option value="$PROJECT_DIR$/middleware.go" />
+        <option value="$PROJECT_DIR$/model.go" />
         <option value="$PROJECT_DIR$/wiki.go" />
         <option value="$PROJECT_DIR$/token.go" />
       </list>
@@ -492,14 +484,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/local/go/src/net/http/server.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="2307" column="5" lean-forward="false" selection-start-line="2307" selection-start-column="5" selection-end-line="2307" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/go/src/database/sql/sql.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="328">
@@ -602,20 +586,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model.go">
+    <entry file="file:///usr/local/go/src/net/http/server.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="681">
-          <caret line="99" column="31" lean-forward="false" selection-start-line="99" selection-start-column="31" selection-end-line="99" selection-end-column="31" />
-          <folding>
-            <element signature="e#14#92#0" expanded="true" />
-            <element signature="n#!!block;n#setupJSON#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="175">
+          <caret line="81" column="5" lean-forward="false" selection-start-line="81" selection-start-column="5" selection-end-line="81" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../github.com/dgrijalva/jwt-go/token.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="87" column="5" lean-forward="false" selection-start-line="87" selection-start-column="5" selection-end-line="87" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/auth.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
+        <state relative-caret-position="1375">
           <caret line="136" column="0" lean-forward="true" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
           <folding>
             <element signature="e#14#113#0" expanded="true" />
@@ -629,8 +618,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wiki.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="178" column="0" lean-forward="false" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
+        <state relative-caret-position="340">
+          <caret line="175" column="61" lean-forward="false" selection-start-line="175" selection-start-column="61" selection-end-line="175" selection-end-column="61" />
           <folding>
             <element signature="e#14#151#0" expanded="true" />
             <element signature="n#!!block;n#getStaticFiles#0" expanded="false" />
@@ -648,22 +637,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/token.go">
+    <entry file="file://$PROJECT_DIR$/middleware.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        <state relative-caret-position="120">
+          <caret line="8" column="38" lean-forward="true" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
           <folding>
-            <element signature="e#14#74#0" expanded="true" />
+            <element signature="e#14#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/middleware.go">
+    <entry file="file://$PROJECT_DIR$/model.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="41" column="1" lean-forward="true" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
+        <state relative-caret-position="165">
+          <caret line="68" column="74" lean-forward="false" selection-start-line="68" selection-start-column="74" selection-end-line="68" selection-end-column="74" />
           <folding>
-            <element signature="e#14#43#0" expanded="true" />
+            <element signature="e#14#92#0" expanded="true" />
+            <element signature="n#!!block;n#setupJSON#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/token.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="42" column="61" lean-forward="false" selection-start-line="42" selection-start-column="61" selection-end-line="42" selection-end-column="61" />
+          <folding>
+            <element signature="e#14#74#0" expanded="true" />
+            <element signature="e#1245#1264#0" expanded="false" />
           </folding>
         </state>
       </provider>

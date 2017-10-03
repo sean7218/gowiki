@@ -64,16 +64,22 @@ func setupJSON(){
 
 }
 
-func sendJSON(w http.ResponseWriter, r *http.Request) {
+func sendJSON() http.Handler {
 
-	aUser := WebClient{1, "sean7218", "sean7218@l.com", "123"}
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
-	b, err := json.Marshal(aUser)
-	if err != nil {
-		fmt.Println("Error for marshal the json")
-		return
-	}
-	fmt.Fprintf(w, "\n\n JSON: %v",string(b))
+		dataStore := struct { Secret string `json: secret` } { "Jesus is the King of the Universe"}
+		b, err := json.Marshal(dataStore)
+
+		if err != nil {
+			fmt.Println("Error for marshal the json")
+			return
+		}
+		w.Header().Set("Content-Type", "application/json")
+		w.Write(b)
+	})
+
+
 }
 
 func setupDwg(w http.ResponseWriter, r *http.Request){
