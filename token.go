@@ -42,7 +42,7 @@ func verifyJWT() Adapter {
 				// Validate the algorithm is what you expect
 				_, ok := token.Method.(*jwt.SigningMethodHMAC)
 				if ok != false {
-					return nil, fmt.Errorf("unexpected signing Mmthod: %v \n", token.Header["alg"])
+					//return nil, fmt.Errorf("unexpected signing Mmthod: %v \n", token.Header["alg"])
 				}
 				return mySigningKey, nil
 			})
