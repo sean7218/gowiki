@@ -180,7 +180,7 @@ func main() {
 
 
 	// Middleware to handle secure route
-	http.HandleFunc("/verifyJWT", verifyJWT)
+	http.Handle("/verifyJWT", verifyJWT("some"))
 	http.Handle("/sendProtected", sendProtected())
 	http.Handle("/adapt", Adapt(sendProtected(), isAuthenticated()))
 

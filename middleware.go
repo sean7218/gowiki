@@ -21,15 +21,26 @@ func isAuthenticated() Adapter {
 	return func(h http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request){
 
-			tok := r.PostFormValue("bearer")
-			htok := r.Header.Get("bearer")
-			fmt.Println(tok)
-			fmt.Println(htok)
-			if len(tok) < 10 {
+			bod := r.PostFormValue("bearer")
+			hed := r.Header.Get("bearer")
+			var tok string
+			if len(bod) < 5 && len(hed) < 5 {
 				panic(h)
 			}
-			fmt.Println("isAuthenticaed Fired!!!!")
-			h.ServeHTTP(w, r)
+			if len(bod) < 5 {
+				tok = hed
+			} else {
+				tok = bod
+			}
+			// verifyJWT and see if it is okay
+
+			if authJWT(tok) {
+				panic(h)
+			} else {
+				fmt.Println("isAuthenticaed Fired!!!!")
+				h.ServeHTTP(w, r)
+			}
+
 		})
 	}
 }

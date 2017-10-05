@@ -29,9 +29,31 @@ func generateJWT() (string, error) {
 }
 
 // Middleware Version 2
-func verifyJWT(w http.ResponseWriter, r *http.Request) {
+func verifyJWT(bear string) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request){
+		hmacSampleSecret := []byte("AllYourBase")
+
+
+		// Parse and validate the jwt
+		token, err := jwt.Parse(bear, func(token *jwt.Token) (interface{}, error){
+			// Validate the algorithm is what you expect
+			_, ok := token.Method.(*jwt.SigningMethodHMAC)
+			if ok == false {
+				return nil, fmt.Errorf("unexpected signing Mmthod: %v \n", token.Header["alg"])
+			}
+			return hmacSampleSecret, nil
+		})
+
+		if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
+			fmt.Fprintln(w, claims["email"])
+		} else {
+			fmt.Fprintln(w, err)
+		}
+	})
+}
+
+func authJWT(bear string) bool {
 	hmacSampleSecret := []byte("AllYourBase")
-	bear := r.FormValue("bearer")
 
 	// Parse and validate the jwt
 	token, err := jwt.Parse(bear, func(token *jwt.Token) (interface{}, error){
@@ -44,13 +66,14 @@ func verifyJWT(w http.ResponseWriter, r *http.Request) {
 	})
 
 	if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
-		fmt.Fprintln(w, claims["email"])
+		fmt.Println(claims["email"])
+		return true
 	} else {
-		fmt.Fprintln(w, err)
+		fmt.Println(err)
+		return false
 	}
 
 }
-
 
 
 
