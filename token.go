@@ -8,7 +8,7 @@ import (
 
 
 func generateJWT() (string, error) {
-	mySigningKey := []byte("AllYourBase")
+	hmacSampleSecret := []byte("AllYourBase")
 
 	// Create the claims
 	claims := &jwt.MapClaims{
@@ -23,36 +23,32 @@ func generateJWT() (string, error) {
 
 	// Signing the key
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
-	ss, err := token.SignedString(mySigningKey)
+	ss, err := token.SignedString(hmacSampleSecret)
 	fmt.Printf("signed string: %v \nError: %v \n", ss, err)
 	return ss, err
 }
 
 // Middleware Version 2
-func verifyJWT() Adapter {
+func verifyJWT(w http.ResponseWriter, r *http.Request) {
+	hmacSampleSecret := []byte("AllYourBase")
+	bear := r.FormValue("bearer")
 
-	return func(h http.Handler) http.Handler {
-		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	// Parse and validate the jwt
+	token, err := jwt.Parse(bear, func(token *jwt.Token) (interface{}, error){
+		// Validate the algorithm is what you expect
+		_, ok := token.Method.(*jwt.SigningMethodHMAC)
+		if ok == false {
+			return nil, fmt.Errorf("unexpected signing Mmthod: %v \n", token.Header["alg"])
+		}
+		return hmacSampleSecret, nil
+	})
 
-			mySigningKey := []byte("AllYourBase")
-			to := r.FormValue("bearer")
-
-			// Parse and validate the jwt
-			_, err := jwt.Parse(to, func(token *jwt.Token) (interface{}, error){
-				// Validate the algorithm is what you expect
-				_, ok := token.Method.(*jwt.SigningMethodHMAC)
-				if ok != false {
-					//return nil, fmt.Errorf("unexpected signing Mmthod: %v \n", token.Header["alg"])
-				}
-				return mySigningKey, nil
-			})
-			if err != nil {
-				fmt.Fprintln(w, err)
-				//panic(err.Error())
-			}
-
-		})
+	if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
+		fmt.Fprintln(w, claims["email"])
+	} else {
+		fmt.Fprintln(w, err)
 	}
+
 }
 
 

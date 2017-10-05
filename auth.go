@@ -30,13 +30,13 @@ func (h *LoginHandler)ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				w.WriteHeader(http.StatusAccepted)
 				token, err := generateJWT()
 				if err != nil {
-					fmt.Fprintln(w, "Error with token")
+					fmt.Fprintln(w, "Error with token generation")
 					return
 				}
 				var out = struct { Token string `json:token` } { token}
 				jsn, err := json.Marshal(out)
 				if err != nil {
-					fmt.Fprintln(w, "Error with token")
+					fmt.Fprintln(w, "Error with token because of the marshal")
 					return
 				}
 				w.Header().Set("Content-Type", "application/json")
