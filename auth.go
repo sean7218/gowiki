@@ -134,3 +134,37 @@ func (a *AuthHandler)findUserByEmail(email string) http.Handler {
 	})
 
 }
+
+func isAuthenticated() Adapter {
+	return func(h http.Handler) http.Handler {
+		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request){
+
+			bod := r.PostFormValue("bearer")
+			hed := r.Header.Get("bearer")
+			var tok string
+			if len(bod) < 5 && len(hed) < 5 {
+				panic(h)
+			}
+			if len(bod) < 5 {
+				tok = hed
+			} else {
+				tok = bod
+			}
+
+			if verifyJWT(tok) {
+				fmt.Println("authJWT has validate the result!")
+				h.ServeHTTP(w, r)
+			} else {
+				fmt.Println("authJWT return error!!!")
+				panic(h)
+
+			}
+
+		})
+	}
+}
+
+// using for testing purpose only
+func sendProtected() http.Handler {
+	return http.HandlerFunc(setupUsers)
+}

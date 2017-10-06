@@ -178,9 +178,7 @@ func main() {
     // demonstrate how to serve json
 	http.HandleFunc("/getDrawing/", setupUsers )
 
-
 	// Middleware to handle secure route
-	http.Handle("/verifyJWT", verifyJWT("some"))
 	http.Handle("/sendProtected", sendProtected())
 	http.Handle("/adapt", Adapt(sendProtected(), isAuthenticated()))
 

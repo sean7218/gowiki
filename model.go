@@ -2,11 +2,8 @@ package main
 
 import (
 	"fmt"
-	//"os"
 	"encoding/json"
 	"net/http"
-	//"html/template"
-	//"log"
 )
 
 type Response1 struct {
@@ -25,6 +22,7 @@ type WebClient struct {
 	Email string `json:email`
 	Password string `json:password`
 }
+
 func setupJSON(){
 
 	// Following are the encoding from go into json
@@ -64,23 +62,6 @@ func setupJSON(){
 
 }
 
-func sendJSON() http.Handler {
-
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-
-		dataStore := struct { Secret string `json: secret` } { "Jesus is the King of the Universe"}
-		b, err := json.Marshal(dataStore)
-
-		if err != nil {
-			fmt.Println("Error for marshal the json")
-			return
-		}
-		w.Header().Set("Content-Type", "application/json")
-		w.Write(b)
-	})
-
-
-}
 
 func setupUsers(w http.ResponseWriter, r *http.Request){
 
@@ -103,14 +84,6 @@ func setupUsers(w http.ResponseWriter, r *http.Request){
 	}
 
 	w.Write(ou)
-
-	//tmpl := template.Must(template.ParseFiles("public/dwg.html", "public/header.html", "public/footer.html", "public/script.html"))
-	//err := tmpl.ExecuteTemplate(w, "dwg.html", users)
-	//if err != nil {
-	//	fmt.Println("Error for executing the template")
-	//	fmt.Println(err.Error())
-	//	return
-	//}
 
 
 }

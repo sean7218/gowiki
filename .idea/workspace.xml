@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="6a264f1f-7a9a-4947-aebb-0157c9917b75" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auth.go" afterPath="$PROJECT_DIR$/auth.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.go" afterPath="$PROJECT_DIR$/db.go" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/middleware.go" afterPath="$PROJECT_DIR$/middleware.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model.go" afterPath="$PROJECT_DIR$/model.go" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/token.go" afterPath="$PROJECT_DIR$/token.go" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wiki.go" afterPath="$PROJECT_DIR$/wiki.go" />
     </list>
@@ -19,8 +22,8 @@
       <file leaf-file-name="wiki.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wiki.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="182" column="45" lean-forward="false" selection-start-line="182" selection-start-column="45" selection-end-line="182" selection-end-column="45" />
+            <state relative-caret-position="257">
+              <caret line="146" column="26" lean-forward="true" selection-start-line="146" selection-start-column="26" selection-end-line="146" selection-end-column="26" />
               <folding>
                 <element signature="e#14#151#0" expanded="true" />
                 <element signature="n#!!block;n#getStaticFiles#0" expanded="false" />
@@ -42,8 +45,8 @@
       <file leaf-file-name="db.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/db.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+            <state relative-caret-position="45">
+              <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -52,10 +55,10 @@
       <file leaf-file-name="token.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/token.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="650">
-              <caret line="71" column="23" lean-forward="false" selection-start-line="71" selection-start-column="23" selection-end-line="71" selection-end-column="23" />
+            <state relative-caret-position="255">
+              <caret line="17" column="24" lean-forward="false" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
               <folding>
-                <element signature="e#14#74#0" expanded="true" />
+                <element signature="e#14#62#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -64,11 +67,9 @@
       <file leaf-file-name="middleware.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/middleware.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="38" column="20" lean-forward="true" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
-              <folding>
-                <element signature="e#14#44#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="45">
+              <caret line="3" column="14" lean-forward="false" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -76,12 +77,9 @@
       <file leaf-file-name="model.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
-              <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="68" />
-              <folding>
-                <element signature="e#14#96#0" expanded="true" />
-                <element signature="n#!!block;n#setupJSON#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="60">
+              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="6" selection-end-column="1" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -89,14 +87,14 @@
       <file leaf-file-name="auth.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/auth.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="645">
-              <caret line="43" column="20" lean-forward="true" selection-start-line="43" selection-start-column="20" selection-end-line="43" selection-end-column="20" />
+            <state relative-caret-position="252">
+              <caret line="96" column="0" lean-forward="true" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
               <folding>
                 <element signature="e#14#113#0" expanded="true" />
-                <marker date="1507164728000" expanded="true" signature="1619:1652" ph="INSERT INTO t... " />
-                <marker date="1507164728000" expanded="true" signature="2179:2213" ph="SELECT * FRO... t" />
-                <marker date="1507164728000" expanded="true" signature="2645:2679" ph="SELECT * FRO... t" />
-                <marker date="1507164728000" expanded="true" signature="3220:3251" ph="SELECT * FRO... t" />
+                <marker date="1507255298000" expanded="true" signature="1619:1652" ph="INSERT INTO t... " />
+                <marker date="1507255298000" expanded="true" signature="2179:2213" ph="SELECT * FRO... t" />
+                <marker date="1507255298000" expanded="true" signature="2645:2679" ph="SELECT * FRO... t" />
+                <marker date="1507255298000" expanded="true" signature="3220:3251" ph="SELECT * FRO... t" />
               </folding>
             </state>
           </provider>
@@ -154,7 +152,6 @@
         <option value="$PROJECT_DIR$/jsonEx.go" />
         <option value="$PROJECT_DIR$/main.html" />
         <option value="$PROJECT_DIR$/public/style.css" />
-        <option value="$PROJECT_DIR$/db.go" />
         <option value="$PROJECT_DIR$/public/header.html" />
         <option value="$PROJECT_DIR$/public/footer.html" />
         <option value="$PROJECT_DIR$/public/scripts.html" />
@@ -164,10 +161,11 @@
         <option value="$PROJECT_DIR$/public/content.html" />
         <option value="$PROJECT_DIR$/public/navbar.html" />
         <option value="$PROJECT_DIR$/public/main.html" />
-        <option value="$PROJECT_DIR$/model.go" />
+        <option value="$PROJECT_DIR$/middleware.go" />
         <option value="$PROJECT_DIR$/auth.go" />
         <option value="$PROJECT_DIR$/wiki.go" />
-        <option value="$PROJECT_DIR$/middleware.go" />
+        <option value="$PROJECT_DIR$/model.go" />
+        <option value="$PROJECT_DIR$/db.go" />
         <option value="$PROJECT_DIR$/token.go" />
       </list>
     </option>
@@ -287,13 +285,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="829" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16180556" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2708058" sideWeight="0.22847222" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2708058" sideWeight="0.77152777" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2708058" sideWeight="0.77152777" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -345,10 +344,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="930">
           <caret line="99" column="31" lean-forward="false" selection-start-line="99" selection-start-column="31" selection-end-line="99" selection-end-column="31" />
-          <folding>
-            <element signature="e#14#96#0" expanded="true" />
-            <element signature="n#!!block;n#setupJSON#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -414,10 +410,10 @@
           <caret line="48" column="22" lean-forward="false" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
           <folding>
             <element signature="e#14#113#0" expanded="true" />
-            <marker date="1507164728000" expanded="true" signature="1619:1652" ph="INSERT INTO t... " />
-            <marker date="1507164728000" expanded="true" signature="2179:2213" ph="SELECT * FRO... t" />
-            <marker date="1507164728000" expanded="true" signature="2645:2679" ph="SELECT * FRO... t" />
-            <marker date="1507164728000" expanded="true" signature="3220:3251" ph="SELECT * FRO... t" />
+            <marker date="1507255298000" expanded="true" signature="1619:1652" ph="INSERT INTO t... " />
+            <marker date="1507255298000" expanded="true" signature="2179:2213" ph="SELECT * FRO... t" />
+            <marker date="1507255298000" expanded="true" signature="2645:2679" ph="SELECT * FRO... t" />
+            <marker date="1507255298000" expanded="true" signature="3220:3251" ph="SELECT * FRO... t" />
           </folding>
         </state>
       </provider>
@@ -603,25 +599,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="68" />
-          <folding>
-            <element signature="e#14#96#0" expanded="true" />
-            <element signature="n#!!block;n#setupJSON#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/go/src/net/http/server.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
@@ -630,24 +607,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/auth.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="43" column="20" lean-forward="true" selection-start-line="43" selection-start-column="20" selection-end-line="43" selection-end-column="20" />
-          <folding>
-            <element signature="e#14#113#0" expanded="true" />
-            <marker date="1507164728000" expanded="true" signature="1619:1652" ph="INSERT INTO t... " />
-            <marker date="1507164728000" expanded="true" signature="2179:2213" ph="SELECT * FRO... t" />
-            <marker date="1507164728000" expanded="true" signature="2645:2679" ph="SELECT * FRO... t" />
-            <marker date="1507164728000" expanded="true" signature="3220:3251" ph="SELECT * FRO... t" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wiki.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="182" column="45" lean-forward="false" selection-start-line="182" selection-start-column="45" selection-end-line="182" selection-end-column="45" />
+        <state relative-caret-position="257">
+          <caret line="146" column="26" lean-forward="true" selection-start-line="146" selection-start-column="26" selection-end-line="146" selection-end-column="26" />
           <folding>
             <element signature="e#14#151#0" expanded="true" />
             <element signature="n#!!block;n#getStaticFiles#0" expanded="false" />
@@ -665,22 +628,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/model.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="6" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/middleware.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="38" column="20" lean-forward="true" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
+        <state relative-caret-position="45">
+          <caret line="3" column="14" lean-forward="false" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auth.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="96" column="0" lean-forward="true" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
           <folding>
-            <element signature="e#14#44#0" expanded="true" />
+            <element signature="e#14#113#0" expanded="true" />
+            <marker date="1507255298000" expanded="true" signature="1619:1652" ph="INSERT INTO t... " />
+            <marker date="1507255298000" expanded="true" signature="2179:2213" ph="SELECT * FRO... t" />
+            <marker date="1507255298000" expanded="true" signature="2645:2679" ph="SELECT * FRO... t" />
+            <marker date="1507255298000" expanded="true" signature="3220:3251" ph="SELECT * FRO... t" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/token.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="650">
-          <caret line="71" column="23" lean-forward="false" selection-start-line="71" selection-start-column="23" selection-end-line="71" selection-end-column="23" />
+        <state relative-caret-position="255">
+          <caret line="17" column="24" lean-forward="false" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
           <folding>
-            <element signature="e#14#74#0" expanded="true" />
+            <element signature="e#14#62#0" expanded="true" />
           </folding>
         </state>
       </provider>
