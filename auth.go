@@ -7,6 +7,7 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 
 	"encoding/json"
+	"golang.org/x/crypto/bcrypt"
 )
 
 type AuthHandler struct {
@@ -66,10 +67,16 @@ func registerHandler(db *sql.DB) http.Handler {
 			password := r.PostFormValue("password")
 			if username != "" && email != "" && password !="" {
 
+				hashed, err := bcrypt.GenerateFromPassword([]byte(password), 5)
+				if err != nil {
+					fmt.Println("Hashing Password Error")
+				}
+
+
 				stmtIns, err := db.Prepare("INSERT INTO t VALUES (?, ?, ?, ?)")
 				if err != nil { panic(err.Error())}
 				defer stmtIns.Close()
-				_, err = stmtIns.Exec( nil , username, email, password)
+				_, err = stmtIns.Exec( nil , username, email, hashed	)
 				if err != nil { panic(err.Error()) }
 				fmt.Fprintln(w, "Finished inserting")
 
