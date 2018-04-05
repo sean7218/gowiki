@@ -141,10 +141,14 @@ func main() {
 	p2, _ := loadPage("TestPage")
 	fmt.Println(string(p2.Body))
 
+	//user@cloudsql(project-id:regionname:instance-name)/dbname
+	//db, err := sql.Open("mysql", "sean7218@cloudql(fatigue-creep-me-vpi:us-central1:fatigue-v17501)/mydb")
 	// Setup database
-	db, err := sql.Open("mysql", "szhang:password@unix(/tmp/mysql.sock)/user?loc=Local")
+	db, err := sql.Open("mysql", "sean7218:SZ12192017!@cloudsql(fatigue-creep-me-vpi:us-central1:fatigue-v17501)/mydb")
+	//db, err := sql.Open("mysql", "szhang:password@unix(/tmp/mysql.sock)/user?loc=Local")
+	//db, err := sql.Open("mysql", "sean7218:SZ12192017!@unix(/cloudsql/fatigue-creep-me-vpi:us-central1:fatigue-v17501)/mydb")
 	if err != nil {
-		panic(err.Error())
+		panic(err.Error())  
 	}
 
 	defer db.Close()
