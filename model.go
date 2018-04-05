@@ -2,11 +2,8 @@ package main
 
 import (
 	"fmt"
-	//"os"
 	"encoding/json"
 	"net/http"
-	"html/template"
-	"log"
 )
 
 type Response1 struct {
@@ -20,11 +17,12 @@ type Response2 struct {
 }
 
 type WebClient struct {
-	Id int
-	Username string
-	Email string
-	Password string
+	Id int `json: id`
+	Username string `json:username`
+	Email string `json:email`
+	Password string `json:password`
 }
+
 func setupJSON(){
 
 	// Following are the encoding from go into json
@@ -64,25 +62,8 @@ func setupJSON(){
 
 }
 
-func sendJSON() http.Handler {
 
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-
-		dataStore := struct { Secret string `json: secret` } { "Jesus is the King of the Universe"}
-		b, err := json.Marshal(dataStore)
-
-		if err != nil {
-			fmt.Println("Error for marshal the json")
-			return
-		}
-		w.Header().Set("Content-Type", "application/json")
-		w.Write(b)
-	})
-
-
-}
-
-func setupDwg(w http.ResponseWriter, r *http.Request){
+func setupUsers(w http.ResponseWriter, r *http.Request){
 
 	aUser := WebClient{1, "sean7218", "sean7218@l.com", "211"}
 	bUser := WebClient{2, "josh7218", "josh7218@l.com", "12323"}
@@ -95,15 +76,17 @@ func setupDwg(w http.ResponseWriter, r *http.Request){
 
 	users := [7]WebClient{ aUser, bUser, cUser, dUser, eUser, fUser, gUser}
 
-	for i := range users {
-		log.Printf("Key: %s, Value: %v \n", i)
+    w.Header().Set("Content-Type", "application/json")
+    ou, er := json.Marshal(users)
+
+    if er != nil {
+    	panic(er.Error())
 	}
 
-	tmpl := template.Must(template.ParseFiles("public/dwg.html", "public/header.html", "public/footer.html", "public/script.html"))
-	err := tmpl.ExecuteTemplate(w, "dwg.html", users)
-	if err != nil {
-		fmt.Println("Error for executing the template")
-		fmt.Println(err.Error())
-		return
-	}
+	w.Write(ou)
+
+
 }
+
+
+

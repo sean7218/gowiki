@@ -7,6 +7,7 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 
 	"encoding/json"
+	"golang.org/x/crypto/bcrypt"
 )
 
 type AuthHandler struct {
@@ -30,13 +31,13 @@ func (h *LoginHandler)ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				w.WriteHeader(http.StatusAccepted)
 				token, err := generateJWT()
 				if err != nil {
-					fmt.Fprintln(w, "Error with token")
+					fmt.Fprintln(w, "Error with token generation")
 					return
 				}
 				var out = struct { Token string `json:token` } { token}
 				jsn, err := json.Marshal(out)
 				if err != nil {
-					fmt.Fprintln(w, "Error with token")
+					fmt.Fprintln(w, "Error with token because of the marshal")
 					return
 				}
 				w.Header().Set("Content-Type", "application/json")
@@ -66,10 +67,16 @@ func registerHandler(db *sql.DB) http.Handler {
 			password := r.PostFormValue("password")
 			if username != "" && email != "" && password !="" {
 
+				hashed, err := bcrypt.GenerateFromPassword([]byte(password), 5)
+				if err != nil {
+					fmt.Println("Hashing Password Error")
+				}
+
+
 				stmtIns, err := db.Prepare("INSERT INTO t VALUES (?, ?, ?, ?)")
 				if err != nil { panic(err.Error())}
 				defer stmtIns.Close()
-				_, err = stmtIns.Exec( nil , username, email, password)
+				_, err = stmtIns.Exec( nil , username, email, hashed	)
 				if err != nil { panic(err.Error()) }
 				fmt.Fprintln(w, "Finished inserting")
 
@@ -133,4 +140,38 @@ func (a *AuthHandler)findUserByEmail(email string) http.Handler {
 		fmt.Fprintf(w, "User Email: %s", outEmail)
 	})
 
+}
+
+func isAuthenticated() Adapter {
+	return func(h http.Handler) http.Handler {
+		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request){
+
+			bod := r.PostFormValue("bearer")
+			hed := r.Header.Get("bearer")
+			var tok string
+			if len(bod) < 5 && len(hed) < 5 {
+				panic(h)
+			}
+			if len(bod) < 5 {
+				tok = hed
+			} else {
+				tok = bod
+			}
+
+			if verifyJWT(tok) {
+				fmt.Println("authJWT has validate the result!")
+				h.ServeHTTP(w, r)
+			} else {
+				fmt.Println("authJWT return error!!!")
+				panic(h)
+
+			}
+
+		})
+	}
+}
+
+// using for testing purpose only
+func sendProtected() http.Handler {
+	return http.HandlerFunc(setupUsers)
 }

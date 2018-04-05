@@ -14,3 +14,4 @@ func Adapt(h http.Handler, adapters ...Adapter) http.Handler {
 	}
 	return h
 }
+

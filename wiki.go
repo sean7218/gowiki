@@ -162,22 +162,30 @@ func main() {
 	//setupCJWT()
 	//a := AuthHandler{ db }
 	//l := LoginHandler{ db}
+
+	// this is tutorial from the golang.org
 	http.HandleFunc("/", handler)
 	http.HandleFunc("/view/", viewHandler)
 	http.HandleFunc("/edit/", editHandler)
 	http.HandleFunc("/save/", saveHandler)
+
+	// main page for login and register
 	http.HandleFunc("/main/", mPageHandler)
+
+	// show how to serve static files
 	http.HandleFunc("/getStaticFile", getStaticFiles)
 
+	// pattern difference between register and login
 	http.Handle("/register", registerHandler(db))
 	http.Handle("/login", &LoginHandler{db })
 
+    // demonstrate how to serve json
+	http.HandleFunc("/getDrawing/", setupUsers )
 
-	http.HandleFunc("/getDrawing/", setupDwg )
+	// Middleware to handle secure route
+	http.Handle("/sendProtected", sendProtected())
+	http.Handle("/adapt", Adapt(sendProtected(), isAuthenticated()))
 
-
-	// Middleware
-	http.Handle("/protect/info", Adapt(sendJSON(), verifyJWT()))
 
 	http.ListenAndServe(":8080", nil)
 
